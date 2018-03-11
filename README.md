@@ -6,4 +6,6 @@ Step 2: Download all the php and html files and store it in the localhost.
 Step 3: To load your server type localhost and the folder name on your url.
 
 Description: an innovative project to show the locations of the medical shops which provide the medicine you want to search. It also shows the alternative and generic  medicine.
-It also enables the shopowner to update the stock of medicines
+It also enables the shopowner to update the stock of medicines.
+The update done by the shopowner is reflected in our database.
+Our basic idea was to create an awareness about generic medicines.
