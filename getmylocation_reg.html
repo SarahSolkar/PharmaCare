@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>GeoLocation</title>
+</head>
+<body>
+	<p>Please click the button!To help you out.</p>
+	<button onclick="getLocation()">Get My Location</button>
+	<div id="output"></div>
+	<script>
+		var x=document.getElementById('output');
+		function getLocation()
+		{
+			if(navigator.geolocation)
+			{
+				navigator.geolocation.getCurrentPosition(redirectToPosition);
+				//x.innerHTML="";
+			}
+			else{
+				x.innerHTML="Please update your browser";
+			}
+	}
+	function redirectToPosition(position)
+	{
+		window.location='registration.php?lat='+position.coords.latitude+'&long='+position.coords.longitude;
+	}
+	</script>
+</body>
+</html>
+
+<!--
+x.innerHTML ="Latitude = "+position.coords.latitude
+x.innerHTML += "<br/>"
+x.innerHTML +="Longitude = "+position.coords.longitude
+-->

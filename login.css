@@ -1,0 +1,20 @@
+body
+{
+	background: grey;
+}
+#form
+{
+	border: solid grey 1px;
+	width: 20%;
+	border-radius: 5px;
+	margin: 100px auto;
+	background: white;
+	padding: 50px;
+}
+#button
+{
+	color: white;
+	background: #3A6CEA;
+	padding: 5px;
+	margin-left: 50%;
+}

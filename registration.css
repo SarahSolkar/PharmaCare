@@ -1,0 +1,64 @@
+body
+{
+	background: lightblue;
+}
+#form
+{
+	border: solid grey 1px;
+	width: 18%;
+	border-radius: 20px;
+	margin: 150px auto;
+	background: #62FFAC;
+	padding: 30px;
+}
+#button
+{
+	color: white;
+	background: blue;
+	padding: 5px;
+	margin-left: 50%;
+}
+#form form p label
+{
+	color: black;
+}
+#form form p input[type='text'],input[type='password']
+{
+	float: right;
+}
+#form form p input[type='submit']
+{
+	left: 50px;
+}
+#login_link
+{
+	color: green;
+}
+#login_link a
+{
+	color: green;
+	border: solid green 1px;
+	border-radius: 5px;
+	background: yellow;
+}
+#form p button[type='submit']
+{
+	color: black;
+	border: solid black 1px;
+	border-radius: 5px;
+	background-color: grey;
+	margin-left: 100px;
+}
+#form p button[onclick='getlocation()']
+{
+	color: black;
+	border: solid black 1px;
+	border-radius: 5px;
+	background-color: grey;
+	margin-left: 70px;
+}
+#form p a:hover
+{
+	color: green;
+	border: solid green 1px;
+}

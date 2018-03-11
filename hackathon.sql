@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Mar 10, 2018 at 04:27 AM
+-- Generation Time: Mar 11, 2018 at 04:47 AM
 -- Server version: 5.7.19
 -- PHP Version: 5.6.31
 
@@ -90,9 +90,31 @@ CREATE TABLE IF NOT EXISTS `gs_rel` (
 --
 
 INSERT INTO `gs_rel` (`gid`, `sid`, `stock`) VALUES
-(2, 101, 100),
-(1, 101, 0),
+(2, 102, 100),
+(1, 102, 0),
 (1, 102, 20);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `login_details`
+--
+
+DROP TABLE IF EXISTS `login_details`;
+CREATE TABLE IF NOT EXISTS `login_details` (
+  `sid` int(4) NOT NULL,
+  `password` varchar(100) NOT NULL,
+  KEY `sid` (`sid`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `login_details`
+--
+
+INSERT INTO `login_details` (`sid`, `password`) VALUES
+(101, 'lauki'),
+(102, 'kebab'),
+(100, 'pool');
 
 -- --------------------------------------------------------
 
@@ -182,8 +204,12 @@ CREATE TABLE IF NOT EXISTS `ms_rel` (
 --
 
 INSERT INTO `ms_rel` (`mid`, `sid`, `stock`) VALUES
-(2000, 100, 15),
-(2000, 102, 0);
+(2000, 100, 30),
+(2001, 100, 25),
+(2000, 103, 30),
+(2000, 102, 5),
+(2000, 124, 5),
+(2003, 124, 10);
 
 -- --------------------------------------------------------
 
@@ -200,21 +226,25 @@ CREATE TABLE IF NOT EXISTS `shopowner` (
   `emailid` varchar(50) NOT NULL,
   `reg_no` varchar(25) NOT NULL DEFAULT 'unknown',
   `pincode` int(10) NOT NULL,
+  `password` varchar(50) NOT NULL,
   PRIMARY KEY (`sid`),
   UNIQUE KEY `contact_no` (`contact_no`),
   UNIQUE KEY `emailid` (`emailid`),
   UNIQUE KEY `reg_no` (`reg_no`),
   UNIQUE KEY `pincode` (`pincode`)
-) ENGINE=InnoDB AUTO_INCREMENT=103 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=125 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `shopowner`
 --
 
-INSERT INTO `shopowner` (`sid`, `name`, `address`, `contact_no`, `emailid`, `reg_no`, `pincode`) VALUES
-(100, 'lucky medicals', 'marol naka', 9892358768, 'luckymeds@gmail.com', 'unknown', 400059),
-(101, 'raja medicals', 'sakinaka', 767890908, 'raja@yahoo.co.in', 'M112', 400072),
-(102, 'swagat medicals', 'vile parle west', 8454672312, 'swagat@yahoo.co.in', 'M113', 400056);
+INSERT INTO `shopowner` (`sid`, `name`, `address`, `contact_no`, `emailid`, `reg_no`, `pincode`, `password`) VALUES
+(100, 'lucky medicals', 'marol naka', 9892358768, 'luckymeds@gmail.com', 'unknown', 400059, 'pool'),
+(101, 'raja medicals', 'sakinaka', 767890908, 'raja@yahoo.co.in', 'M112', 400072, 'lauki'),
+(102, 'swagat medicals', 'vile parle west', 8454672312, 'swagat@yahoo.co.in', 'M113', 400056, 'kebab'),
+(103, 'nishant', 'badlapur', 7775026761, 'nimbalkarnishant98@gmail.com', '1234', 421503, '0e11d184398255abe79cac2d7d7fec73'),
+(123, 'test', 'test', 45678, '98765', '56789', 987654, '098f6bcd4621d373cade4e832627b4f6'),
+(124, 'jayesh', 'ambernath', 98765432345, 'jay', '8916', 24896, 'baba327d241746ee0829e7e88117d4d5');
 
 -- --------------------------------------------------------
 
@@ -236,9 +266,12 @@ CREATE TABLE IF NOT EXISTS `shop_location` (
 --
 
 INSERT INTO `shop_location` (`sid`, `latitude`, `longitude`) VALUES
-(100, '19.23647300', '77.35246000'),
+(100, '19.08660172', '72.88678530'),
 (101, '20.28483820', '78.28372830'),
-(102, '21.28423820', '77.28372830');
+(102, '21.28423820', '77.28372830'),
+(103, '19.34651000', '72.32143000'),
+(123, '19.08078990', '72.89288850'),
+(124, '19.08167030', '72.88857460');
 
 -- --------------------------------------------------------
 
@@ -254,6 +287,36 @@ CREATE TABLE IF NOT EXISTS `sorted_shops` (
   KEY `sid` (`sid`),
   KEY `latitude` (`latitude`,`longitude`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `temp`
+--
+
+DROP TABLE IF EXISTS `temp`;
+CREATE TABLE IF NOT EXISTS `temp` (
+  `medname` varchar(30) NOT NULL,
+  `stock` int(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `temp`
+--
+
+INSERT INTO `temp` (`medname`, `stock`) VALUES
+('crocin', 30),
+('glycomet gp 1', 25),
+('crocin', 30),
+('glycomet gp 1', 25),
+('crocin', 30),
+('glycomet gp 1', 25),
+('crocin', 30),
+('glycomet gp 1', 25),
+('crocin', 30),
+('glycomet gp 1', 25),
+('crocin', 30),
+('glycomet gp 1', 25);
 
 --
 -- Constraints for dumped tables
@@ -271,6 +334,12 @@ ALTER TABLE `dist`
 ALTER TABLE `gs_rel`
   ADD CONSTRAINT `gs_rel_ibfk_1` FOREIGN KEY (`gid`) REFERENCES `genmedicine` (`gid`),
   ADD CONSTRAINT `gs_rel_ibfk_2` FOREIGN KEY (`sid`) REFERENCES `shopowner` (`sid`);
+
+--
+-- Constraints for table `login_details`
+--
+ALTER TABLE `login_details`
+  ADD CONSTRAINT `login_details_ibfk_1` FOREIGN KEY (`sid`) REFERENCES `shopowner` (`sid`);
 
 --
 -- Constraints for table `ma_rel`
