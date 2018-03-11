@@ -9,3 +9,12 @@ Description: an innovative project to show the locations of the medical shops wh
 It also enables the shopowner to update the stock of medicines.
 The update done by the shopowner is reflected in our database.
 Our basic idea was to create an awareness about generic medicines.
+
+
+
+
+
+
+
+
+-
